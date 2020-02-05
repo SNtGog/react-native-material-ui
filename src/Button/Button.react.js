@@ -54,6 +54,9 @@ const propTypes = {
   }),
   primary: PropTypes.bool,
   accent: PropTypes.bool,
+
+  elevation: PropTypes.number,
+  elevationPressed: PropTypes.number
 };
 const defaultProps = {
   testID: null,
@@ -67,6 +70,8 @@ const defaultProps = {
   upperCase: true,
   iconSet: null,
   style: {},
+  elevation: 2,
+  elevationPressed: 4
 };
 
 function getStyles(props, state) {
@@ -141,7 +146,7 @@ class Button extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      elevation: 2, // eslint-disable-line
+      elevation: props.elevation, // eslint-disable-line
     };
   }
 
@@ -155,13 +160,13 @@ class Button extends PureComponent {
 
   setElevation = () => {
     this.setState({
-      elevation: 4, // eslint-disable-line
+      elevation: this.props.elevationPressed, // eslint-disable-line
     });
   };
 
   removeElevation = () => {
     this.setState({
-      elevation: 2, // eslint-disable-line
+      elevation: this.props.elevation, // eslint-disable-line
     });
   };
 
